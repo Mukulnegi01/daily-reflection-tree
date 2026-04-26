@@ -1,0 +1,147 @@
+{
+  "nodes": [
+
+    {
+      "id": "START",
+      "type": "start",
+      "text": "Good evening. Let’s reflect on your day.",
+      "next": "A1_Q1"
+    },
+
+    {
+      "id": "A1_Q1",
+      "type": "question",
+      "text": "How would you describe your day overall?",
+      "options": ["Productive", "Tough", "Mixed", "Frustrating"],
+      "next": "A1_D1"
+    },
+
+    {
+      "id": "A1_D1",
+      "type": "decision",
+      "rules": "answer=Productive|Mixed:A1_Q2_INT;answer=Tough|Frustrating:A1_Q2_EXT"
+    },
+
+    {
+      "id": "A1_Q2_INT",
+      "type": "question",
+      "text": "What helped things go well?",
+      "options": ["My effort", "Adaptation", "Team support", "Luck"],
+      "signal": "axis1:internal",
+      "next": "A1_R_INT"
+    },
+
+    {
+      "id": "A1_R_INT",
+      "type": "reflection",
+      "text": "You recognized your role in what happened today. That shows a sense of agency and control.",
+      "signal": "axis1:internal",
+      "next": "BRIDGE_1_2"
+    },
+
+    {
+      "id": "A1_Q2_EXT",
+      "type": "question",
+      "text": "When things didn’t go as planned, what was your reaction?",
+      "options": ["Felt frustrated", "Waited", "Blamed situation", "Tried something"],
+      "signal": "axis1:external",
+      "next": "A1_R_EXT"
+    },
+
+    {
+      "id": "A1_R_EXT",
+      "type": "reflection",
+      "text": "Difficult situations shift focus outward. Still, there were moments where you had a choice.",
+      "signal": "axis1:external",
+      "next": "BRIDGE_1_2"
+    },
+
+    {
+      "id": "BRIDGE_1_2",
+      "type": "bridge",
+      "text": "Now let’s shift from how you handled situations to what you contributed today.",
+      "next": "A2_Q1"
+    },
+
+    {
+      "id": "A2_Q1",
+      "type": "question",
+      "text": "Which best describes an interaction you had today?",
+      "options": ["Helped someone", "Did extra work", "Felt overlooked", "Expected support"],
+      "next": "A2_D1"
+    },
+
+    {
+      "id": "A2_D1",
+      "type": "decision",
+      "rules": "answer=Helped someone|Did extra work:A2_R_CONTR;answer=Felt overlooked|Expected support:A2_R_ENT"
+    },
+
+    {
+      "id": "A2_R_CONTR",
+      "type": "reflection",
+      "text": "You focused on contributing beyond expectations. That builds trust and long-term value.",
+      "signal": "axis2:contribution",
+      "next": "BRIDGE_2_3"
+    },
+
+    {
+      "id": "A2_R_ENT",
+      "type": "reflection",
+      "text": "It’s natural to expect fairness and recognition. Growth often comes from contribution.",
+      "signal": "axis2:entitlement",
+      "next": "BRIDGE_2_3"
+    },
+
+    {
+      "id": "BRIDGE_2_3",
+      "type": "bridge",
+      "text": "Now let’s expand your perspective beyond yourself.",
+      "next": "A3_Q1"
+    },
+
+    {
+      "id": "A3_Q1",
+      "type": "question",
+      "text": "Who did you think about most while making decisions today?",
+      "options": ["Myself", "My team", "A colleague", "The customer"],
+      "next": "A3_D1"
+    },
+
+    {
+      "id": "A3_D1",
+      "type": "decision",
+      "rules": "answer=Myself:A3_R_SELF;answer=My team|A colleague|The customer:A3_R_OTHER"
+    },
+
+    {
+      "id": "A3_R_SELF",
+      "type": "reflection",
+      "text": "Your focus stayed on your own responsibilities. Expanding perspective can create deeper impact.",
+      "signal": "axis3:self",
+      "next": "SUMMARY"
+    },
+
+    {
+      "id": "A3_R_OTHER",
+      "type": "reflection",
+      "text": "You considered others in your actions. That’s how meaningful contribution grows.",
+      "signal": "axis3:other",
+      "next": "SUMMARY"
+    },
+
+    {
+      "id": "SUMMARY",
+      "type": "summary",
+      "text": "Today you showed patterns across control, contribution, and perspective. Reflecting on these helps you grow with awareness.",
+      "next": "END"
+    },
+
+    {
+      "id": "END",
+      "type": "end",
+      "text": "See you tomorrow."
+    }
+
+  ]
+}
