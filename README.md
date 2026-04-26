@@ -1,5 +1,3 @@
-# daily-reflection-tree
-
 # Daily Reflection Tree
 
 ## Overview
